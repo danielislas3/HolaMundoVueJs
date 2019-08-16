@@ -33,37 +33,74 @@
 
 //   }
 // })
+
+/**************CRUD CON LOCAL STORAGE */
+// const app = new Vue({
+//   el:'#app',
+//   data:{
+//     titulo:'Titulo de Vue',
+//     tareas:[],
+//     nuevaTarea:'',
+//   },
+//   methods:{
+//     agregarTarea(){
+//       this.tareas.push({
+//         nombre:this.nuevaTarea,
+//         estado:false
+//       })
+//       this.nuevaTarea=''
+//       this.guardarLocal()
+//     },
+//     cambiarEstado(index){
+//       this.tareas[index].estado=true
+//       this.guardarLocal()
+//     },
+//     eliminarTarea(index){
+//       this.tareas.splice(index,1 )
+//      this.guardarLocal()
+//     },
+//     guardarLocal(){
+//       localStorage.setItem('datosLocal',JSON.stringify(this.tareas))
+//     }
+//   },
+//   created: function(){
+//     const datosDB = JSON.parse(localStorage.getItem('datosLocal'))
+     
+//     datosDB===null?this.tareas=[]:this.tareas=datosDB
+//   }
+// })
+
+/************UNIDADES COMPUTADAS*************** */
+
 const app = new Vue({
   el:'#app',
   data:{
-    titulo:'Titulo de Vue',
-    tareas:[],
-    nuevaTarea:'',
+    mensaje:"mensaje desde vue",
+    contador:0
   },
-  methods:{
-    agregarTarea(){
-      this.tareas.push({
-        nombre:this.nuevaTarea,
-        estado:false
-      })
-      this.nuevaTarea=''
-      this.guardarLocal()
+
+  computed:{
+    invertido(){
+     return this.mensaje.split('').reverse().join('')
     },
-    cambiarEstado(index){
-      this.tareas[index].estado=true
-      this.guardarLocal()
+    color(){
+      return  {
+        
+        'bg-success':this.contador<=10,
+        'bg-warning':this.contador>10 && this.contador<20,
+        'bg-danger':this.contador>=20,
+      }
     },
-    eliminarTarea(index){
-      this.tareas.splice(index,1 )
-     this.guardarLocal()
+    botonMenos(){
+      if(this.contador===0){
+        return true
+      }else return false
     },
-    guardarLocal(){
-      localStorage.setItem('datosLocal',JSON.stringify(this.tareas))
+    botonMas(){
+      if(this.contador===100){
+        return true
+      }else return false
     }
-  },
-  created: function(){
-    const datosDB = JSON.parse(localStorage.getItem('datosLocal'))
-     
-    datosDB===null?this.tareas=[]:this.tareas=datosDB
+
   }
 })
