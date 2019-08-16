@@ -1,33 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <div id="app">
-    <h1>{{titulo}}</h1>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta" placeholder="Agrega fruta">
-    <input type="number" v-model.number="cantidad" @keyup.enter="agregarFruta" >
-    <button @click="agregarFruta"  >Agregar</button>
-    <ul>
-      <li v-for="fruta of frutas " >{{fruta.cantidad}}-{{fruta.nombre}}
-        <span v-if="fruta.cantidad===0"> -Sin stock</span>
-        <button @click="fruta.cantidad++">+</button>
-        <button @click="fruta.cantidad--">-</button>
-      </li>
-    </ul>
+    <title>CRUD VUE</title>
+  </head>
+  <body>
+   
+      <div class="container mt-5" id="app">
 
-    <h4>Total: {{sumarFrutas}}</h4>
+        <h3>{{titulo}}</h3>
+        <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
+
+        <button class="btn btn-primary" @click="agregarTarea">Add</button>
+
+        <div class="mt-3" v-for="(tarea, index) of tareas">
+          <div role="alert" :class="['alert', tarea.estado?'alert-success':'alert-danger']">
+             <div class="d-flex justify-content-between aling-items-center">
+                <div class="mx-3">
+                  {{index+1}}
+                 {{tarea.nombre}}
+                </div> 
+                <div>
+                  <button class="btn btn-success btm-sm" @click="cambiarEstado(index)" >OK</button>
+                  <button class="btn btn-danger btm-sm" @click="eliminarTarea(index)">X</button>
+                </div>
+             </div>
+          </div>
+        </div>
+
+      </div>
 
 
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="main.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
