@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="compnentes/Saludo.js"></script>
+    <script src="compnentes/Contador.js"></script>
+
+
+    <title>Componentes</title>
+  </head>
+  <body>
+
+    <div id="app" class="container">
+      <saludo></saludo>
+      <contador></contador>
+      
+    </div>
+ 
+      <script>
+
+      new Vue({
+        el:'#app',
+        data:{
+          saludo:"Saludos"
+        }
+      })  
+      </script>
+
+
+    <script src="main.js"></script>
+  </body>
+</html>
